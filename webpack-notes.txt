@@ -1,0 +1,72 @@
+Webpack:-
+webpack is a static module bundler for modern JavaScript applications. When webpack processes your application, it internally builds a dependency graph which maps every module your project needs and generates one or more bundles.
+
+How webpack works? Core Concepts :-
+Entry
+
+Webpack setup Command:-
+npm init
+
+install webpack command :-
+npm install --save-dev webpack (if facing any issue add "--force" after command)
+
+install webpack-dev-server command :-
+npm install webpack-dev-server --save-dev
+
+install react , react dom and react router dom command :-
+npm install --save react react-dom react-router-dom
+
+install webpack CLI command:-
+npm install webpack webpack-cli --save-dev
+
+install all babel package command:-
+npm install --save-dev @babel/core @babel/preset-env @babel/preset-react @babel/preset-stage-2 babel-loader @babel/plugin-proposal-class-properties
+--------------------
+After completing above setup create 2 new files "webpack.config.js" and ".babelrc" parallel with package.json 
+
+//webpack.config.js
+const path = require('path');
+
+module.exports = {
+    mode: 'development',
+    entry: './src/index.js',
+    output: {
+        path: path.resolve(__dirname, 'dist'),
+        filename: 'bundle.js',
+        publicPath: ''
+    },
+    devtool: 'cheap-module-eval-source-map',
+    module: {
+        rules: [
+            {
+                test:/\.js$/,
+                loader: 'babel-loader',
+                exclude: /node_modules/
+            }
+        ]
+    }
+};
+
+//.babelrc
+
+{
+    "presets": [
+        [
+            "@babel/preset-env",
+            {
+                "targets":{
+                    "browsers": ["> 1%","last 2 versions"]
+                }
+            }
+        ],
+        "@babel/preset-react"
+    ],
+    "plugins":[
+        "@babel/plugin-proposal-class-properties"
+    ]
+}
+---------------------------
+CSS class changes as per component with style-loader and css-loader command
+
+npm install --save-dev style-loader css-loader
+
